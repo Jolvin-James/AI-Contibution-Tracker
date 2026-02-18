@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="ContriAI — Track your AI-assisted coding with a beautiful GitHub-style contribution graph. Privacy-first Chrome extension." />
+  <title>ContriAI — Count Your AI Commits</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- ─── Scroll Trail (left side) ─── -->
+  <div class="scroll-trail" id="scrollTrail" aria-hidden="true"></div>
+
+  <!-- ─── Navbar ─── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="navbar__brand">
+        <span class="navbar__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#09090B" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+        </span>
+        ContriAI
+      </a>
+      <ul class="navbar__nav">
+        <li><a href="javascript:void(0)" data-scroll-to="features" class="navbar__link">Features</a></li>
+        <li><a href="javascript:void(0)" data-scroll-to="how-it-works" class="navbar__link">How it works</a></li>
+        <li><a href="javascript:void(0)" data-scroll-to="platforms" class="navbar__link">Platforms</a></li>
+        <li><a href="javascript:void(0)" data-scroll-to="install" class="navbar__cta">Install Extension</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ─── Hero ─── -->
+    <section class="hero" id="hero">
+      <!-- Animated gradient orbs -->
+      <div class="hero__glow" aria-hidden="true">
+        <div class="hero__orb hero__orb--1"></div>
+        <div class="hero__orb hero__orb--2"></div>
+        <div class="hero__orb hero__orb--3"></div>
+      </div>
+
+      <div class="hero__content">
+
+        <h1 class="hero__title">
+          Count your AI commits.<br />
+          <span class="hero__title-dim">Not just your tabs.</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Track every AI-assisted conversation across ChatGPT, Claude, Gemini and DeepSeek.
+          Visualize your workflow in a GitHub-style contribution graph. All data stays local.
+        </p>
+
+        <div class="hero__actions">
+          <a href="javascript:void(0)" data-scroll-to="install" class="btn-primary" id="heroInstallBtn">
+            <span class="btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </span>
+            Add to Chrome
+          </a>
+          <a href="javascript:void(0)" data-scroll-to="features" class="btn-secondary">
+            Learn more
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero__scroll-indicator" id="scrollIndicator" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ─── Keyboard Showcase ─── -->
+    <section class="keyboard-showcase" aria-label="Typing animation showcase">
+      <!-- Typing text -->
+      <div class="hero-typing-display" aria-hidden="true">
+        <span class="hero-typing-text" id="heroTypingText"></span><span class="hero-typing-cursor"
+          id="heroTypingCursor">|</span>
+      </div>
+      <!-- Floating keyboard animation -->
+      <div class="hero-keyboard" id="heroKeyboard" aria-hidden="true">
+        <div class="hero-keyboard__row">
+          <div class="hero-key" data-char="Q">Q</div>
+          <div class="hero-key" data-char="W">W</div>
+          <div class="hero-key" data-char="E">E</div>
+          <div class="hero-key" data-char="R">R</div>
+          <div class="hero-key" data-char="T">T</div>
+          <div class="hero-key" data-char="Y">Y</div>
+          <div class="hero-key" data-char="U">U</div>
+          <div class="hero-key" data-char="I">I</div>
+          <div class="hero-key" data-char="O">O</div>
+          <div class="hero-key" data-char="P">P</div>
+        </div>
+        <div class="hero-keyboard__row">
+          <div class="hero-key" data-char="A">A</div>
+          <div class="hero-key" data-char="S">S</div>
+          <div class="hero-key" data-char="D">D</div>
+          <div class="hero-key" data-char="F">F</div>
+          <div class="hero-key" data-char="G">G</div>
+          <div class="hero-key" data-char="H">H</div>
+          <div class="hero-key" data-char="J">J</div>
+          <div class="hero-key" data-char="K">K</div>
+          <div class="hero-key" data-char="L">L</div>
+        </div>
+        <div class="hero-keyboard__row">
+          <div class="hero-key" data-char="Z">Z</div>
+          <div class="hero-key" data-char="X">X</div>
+          <div class="hero-key" data-char="C">C</div>
+          <div class="hero-key" data-char="V">V</div>
+          <div class="hero-key" data-char="B">B</div>
+          <div class="hero-key" data-char="N">N</div>
+          <div class="hero-key" data-char="M">M</div>
+        </div>
+        <div class="hero-keyboard__row">
+          <div class="hero-key hero-key--space" data-char=" "></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Scroll Contribution Graph ─── -->
+    <section class="scroll-graph" id="scroll-graph" aria-label="Scroll-driven contribution graph animation">
+      <div class="scroll-graph__sticky">
+        <header class="scroll-graph__header">
+          <span class="scroll-graph__label">Your activity</span>
+          <h2 class="scroll-graph__title">
+            Watch your graph<br />
+            <span class="scroll-graph__title-dim">come alive.</span>
+          </h2>
+          <p class="scroll-graph__counter"><strong id="scrollCommitCount">0</strong> contributions</p>
+        </header>
+        <div class="scroll-graph__wrap">
+          <div class="scroll-graph__months" id="scrollGraphMonths"></div>
+          <div class="scroll-graph__grid" id="scrollGraphGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ─── Features ─── -->
+    <section class="section" id="features">
+      <div class="container">
+        <header class="section__header reveal">
+          <span class="section__label">Features</span>
+          <h2 class="section__title">
+            Everything you need.<br />
+            <span class="section__title-dim">Nothing you don't.</span>
+          </h2>
+        </header>
+
+        <div class="features__grid reveal-stagger">
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Contribution graph</h3>
+            <p class="feature-card__desc">A GitHub-style heatmap that captures your daily AI usage patterns at a glance.
+              See your work unfold over time.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Privacy-first</h3>
+            <p class="feature-card__desc">All data stored locally in your browser. No servers, no analytics, no
+              accounts. Your usage data never leaves your machine.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Zero configuration</h3>
+            <p class="feature-card__desc">Install once, forget about it. Automatically detects when you send prompts on
+              supported AI platforms.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Streak tracking</h3>
+            <p class="feature-card__desc">Current and longest streaks keep you motivated. See consecutive days of
+              AI-assisted coding at a glance.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Daily &amp; weekly stats</h3>
+            <p class="feature-card__desc">Granular breakdowns by platform, day and week. Understand which tools drive
+              your productivity.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+                <path d="M12 6v6l4 2" stroke-width="0" fill="none" />
+                <path d="M2 12h4M18 12h4M12 2v4M12 18v4" />
+              </svg>
+            </div>
+            <h3 class="feature-card__title">Multi-platform</h3>
+            <p class="feature-card__desc">Unified tracking across ChatGPT, Claude, Gemini and DeepSeek from a single
+              extension popup.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ─── How It Works ─── -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <header class="section__header reveal">
+          <span class="section__label">How it works</span>
+          <h2 class="section__title">Three steps. That's it.</h2>
+        </header>
+
+        <div class="steps__grid reveal-stagger">
+          <article class="step-card reveal">
+            <span class="step-card__number">1</span>
+            <h3 class="step-card__title">Install the extension</h3>
+            <p class="step-card__desc">Add ContriAI to Chrome. No accounts, no sign-ups, no permissions
+              beyond what's needed.</p>
+          </article>
+
+          <article class="step-card reveal">
+            <span class="step-card__number">2</span>
+            <h3 class="step-card__title">Use AI as you normally do</h3>
+            <p class="step-card__desc">Chat with ChatGPT, Claude, Gemini or DeepSeek. Every prompt you send is
+              automatically tracked locally.</p>
+          </article>
+
+          <article class="step-card reveal">
+            <span class="step-card__number">3</span>
+            <h3 class="step-card__title">See your contributions</h3>
+            <p class="step-card__desc">Open the extension popup to see your contribution graph, streak stats and
+              platform breakdown — instantly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ─── Platforms ─── -->
+    <section class="section" id="platforms">
+      <div class="container">
+        <header class="section__header reveal">
+          <span class="section__label">Integrations</span>
+          <h2 class="section__title">
+            Works with the tools<br />
+            <span class="section__title-dim">you already use.</span>
+          </h2>
+        </header>
+
+        <div class="platforms__grid reveal-stagger">
+          <div class="platform-chip reveal">
+            <span class="platform-chip__dot platform-chip__dot--green" aria-hidden="true"></span>
+            ChatGPT
+          </div>
+          <div class="platform-chip reveal">
+            <span class="platform-chip__dot platform-chip__dot--orange" aria-hidden="true"></span>
+            Claude
+          </div>
+          <div class="platform-chip reveal">
+            <span class="platform-chip__dot platform-chip__dot--blue" aria-hidden="true"></span>
+            Gemini
+          </div>
+          <div class="platform-chip reveal">
+            <span class="platform-chip__dot platform-chip__dot--purple" aria-hidden="true"></span>
+            DeepSeek
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ─── CTA ─── -->
+    <section class="cta-section" id="install">
+      <div class="container">
+        <div class="cta-section__inner reveal cta-section__glow">
+          <h2 class="cta-section__title">Ready to track<br />your AI workflow?</h2>
+          <p class="cta-section__desc">Free, open-source and installs in seconds. No accounts required.</p>
+          <a href="#" class="btn-primary" id="ctaInstallBtn">
+            <span class="btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </span>
+            Add to Chrome -- It's Free
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── Footer ─── -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">&copy; 2026 ContriAI</p>
+      <ul class="footer__links">
+        <li><a href="#" class="footer__link">GitHub</a></li>
+        <li><a href="#" class="footer__link">Privacy</a></li>
+        <li><a href="#" class="footer__link">Docs</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

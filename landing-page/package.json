@@ -1,0 +1,19 @@
+{
+    "name": "ai-contribution-tracker-landing",
+    "version": "1.0.0",
+    "description": "Landing page with Remotion motion graphic for AI Contribution Tracker",
+    "scripts": {
+        "dev": "npx remotion studio",
+        "build": "npx remotion render KeyboardComposition out/landing.mp4",
+        "render-webm": "npx remotion render KeyboardComposition out/landing.webm"
+    },
+    "dependencies": {
+        "@remotion/cli": "4.0.422",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "remotion": "4.0.422"
+    },
+    "devDependencies": {
+        "@remotion/bundler": "4.0.422"
+    }
+}
