@@ -1,0 +1,24 @@
+{
+    "name": "ai-contribution-tracker",
+    "version": "1.0.0",
+    "description": "Privacy-first Chrome extension to track AI platform usage with GitHub-style contribution graphs",
+    "scripts": {
+        "dev": "echo 'Load unpacked extension from project directory'",
+        "build": "echo 'Extension ready for production'",
+        "test": "jest --verbose"
+    },
+    "keywords": [
+        "chrome-extension",
+        "ai-tracker",
+        "chatgpt",
+        "claude",
+        "gemini",
+        "productivity"
+    ],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "@jest/globals": "^30.2.0",
+        "jest": "^30.2.0"
+    }
+}

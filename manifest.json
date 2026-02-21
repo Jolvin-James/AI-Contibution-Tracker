@@ -1,0 +1,69 @@
+{
+    "manifest_version": 3,
+    "name": "ContriAI",
+    "version": "1.0.0",
+    "description": "Track and visualize your AI platform usage with a GitHub-style contribution graph. Privacy-first, local-only tracking.",
+    "permissions": [
+        "storage"
+    ],
+    "host_permissions": [
+        "https://chatgpt.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*",
+        "https://chat.deepseek.com/*"
+    ],
+    "background": {
+        "service_worker": "src/background/service-worker.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chatgpt.com/*"
+            ],
+            "js": [
+                "src/content/tracker-chatgpt.js"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://claude.ai/*"
+            ],
+            "js": [
+                "src/content/tracker-claude.js"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://gemini.google.com/*"
+            ],
+            "js": [
+                "src/content/tracker-gemini.js"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://chat.deepseek.com/*"
+            ],
+            "js": [
+                "src/content/tracker-deepseek.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_popup": "src/popup/popup.html",
+        "default_icon": {
+            "16": "src/assets/icon16.png",
+            "48": "src/assets/icon48.png",
+            "128": "src/assets/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "src/assets/icon16.png",
+        "48": "src/assets/icon48.png",
+        "128": "src/assets/icon128.png"
+    }
+}
